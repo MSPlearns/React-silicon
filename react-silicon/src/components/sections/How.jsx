@@ -45,18 +45,20 @@ const How = () => {
         </div>
 
         <div className="content desktop">
-          <p className="subheader">Latest transaction history</p>
-          <p className="text">
+          <p className="subheader text-align-center">
+            Latest transaction history
+          </p>
+          <p className="text text-align-center">
             Enim, et amet praesent pharetra. Mi non ante hendrerit amet sed.
             Arcu sociis tristique quisque hac in consectetur condimentum.
           </p>
         </div>
 
-        <div className="content mobile tablet">
-          <p className="subheader">
+        <div className="content mobile tablet ">
+          <p className="subheader text-align-center">
             Transfers to people from your contact list
           </p>
-          <p className="text">
+          <p className="text text-align-center">
             Proin volutpat mollis egestas. Nam luctus facilisis ultrices.
             Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus
           </p>

@@ -37,7 +37,7 @@ const Hero = () => {
 
             <div className="card discover-more">
               <a href="#features">
-                <button className="btn plain-link btn-light btn-carousel shape-round">
+                <button className="btn plain-link icon-background shape-round">
                   <i
                     name="icon"
                     className=" fa fa-sharp fa-solid fa-angle-down"

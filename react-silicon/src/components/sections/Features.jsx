@@ -1,5 +1,6 @@
 import React from "react";
 import phoneCard from "/src/assets/images/features-phone-with-card.svg";
+import FeatureCard from "../others/FeatureCard";
 
 const Features = () => {
   return (
@@ -22,101 +23,46 @@ const Features = () => {
         </div>
 
         <div className="feature-list">
-          <div className="wrapper">
-            <div
-              className="icon icon-background shape-square"
-              name="credit card icon"
-            >
-              <span className="text-gradient fa fa-regular fa-credit-card-front"></span>
-            </div>
-            <div>
-              <h3 className="header inline">Easy Payments</h3>
-              <p className="text-m">
-                Id mollis consectetur congue egestas egestas suspendisse blandit
-                justo.
-              </p>
-            </div>
-          </div>
+          <FeatureCard
+            icon="fa-credit-card-front"
+            title="Easy Payments"
+            text="Id mollis consectetur congue egestas egestas suspendisse blandit
+                justo."
+          />
 
-          <div className="wrapper">
-            <div
-              className="icon icon-background shape-square"
-              name="shield icon"
-            >
-              <span className="text-gradient fa fa-regular fa-shield-check"></span>
-            </div>
-            <div>
-              <h3 className="header inline">Data Security</h3>
-              <p className="text-m">
-                Augue pulvinar justo, fermentum fames aliquam accumsan
-                vestibulum non.
-              </p>
-            </div>
-          </div>
+          <FeatureCard
+            icon="fa-shield-check"
+            title="Data Security"
+            text="Augue pulvinar justo, fermentum fames aliquam accumsan
+                vestibulum non."
+          />
 
-          <div className="wrapper">
-            <div
-              className="icon icon-background shape-square"
-              name="bar chart icon"
-            >
-              <span className="text-gradient fa fa-regular fa-chart-simple"></span>
-            </div>
-            <div>
-              <h3 className="header inline">Cost Statistics</h3>
-              <p className="text-m">
-                Mattis urna ultricies non amet, purus in auctor non. Odio
-                vulputate ac nibh.
-              </p>
-            </div>
-          </div>
+          <FeatureCard
+            icon="fa-chart-simple"
+            title="Cost Statistics"
+            text="Mattis urna ultricies non amet, purus in auctor non. Odio
+                vulputate ac nibh."
+          />
 
-          <div className="wrapper">
-            <div
-              className="icon icon-background shape-square"
-              name="question icon"
-            >
-              <span className="text-gradient fa fa-regular fa-comments-question"></span>
-            </div>
-            <div>
-              <h3 className="header inline">Support 24/7</h3>
-              <p className="text-m">
-                A elementum, imperdiet enim, pretium etiam facilisi in aenean
-                quam mauris.
-              </p>
-            </div>
-          </div>
+          <FeatureCard
+            icon="fa-comments-question"
+            title="Support 24/7"
+            text="A elementum, imperdiet enim, pretium etiam facilisi in aenean
+                quam mauris."
+          />
 
-          <div className="wrapper">
-            <div
-              className="icon icon-background shape-square"
-              name="wallet icon"
-            >
-              <span className="text-gradient fa fa-regular fa-wallet"></span>
-            </div>
-            <div>
-              <h3 className="header inline">Regular Cashback</h3>
-              <p className="text-m">
-                Sit facilisis dolor arcu, fermentum vestibulum arcu elementum
-                imperdiet eleifend.
-              </p>
-            </div>
-          </div>
-
-          <div className="wrapper">
-            <div
-              className="icon icon-background shape-square"
-              name="happy icon"
-            >
-              <span className="text-gradient fa fa-regular fa-face-smile-beam"></span>
-            </div>
-            <div>
-              <h3 className="header inline">Top Standards</h3>
-              <p className="text-m">
-                Faucibus cursus maecenas lorem cursus nibh. Sociis sit risus id.
-                Sit facilisis dolor arcu.
-              </p>
-            </div>
-          </div>
+          <FeatureCard
+            icon="fa-wallet"
+            title="Regular Cashback"
+            text="Sit facilisis dolor arcu, fermentum vestibulum arcu elementum
+                imperdiet eleifend."
+          />
+          <FeatureCard
+            icon="fa-face-smile-beam"
+            title="Top Standards"
+            text="Faucibus cursus maecenas lorem cursus nibh. Sociis sit risus id.
+                Sit facilisis dolor arcu."
+          />
         </div>
       </div>
     </section>
