@@ -4,6 +4,7 @@ import screenGraph from "/src/assets/images/how-section-screen-budget-graph.svg"
 import screenBudget from "/src/assets/images/how-section-screen-transaction-history.svg";
 import screenContacts from "/src/assets/images/how-section-screen-contact-list.svg";
 import screenTransference from "/src/assets/images/how-section-screen-ongoing-transference.svg";
+import "./how.css";
 
 const How = () => {
   return (

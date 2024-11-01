@@ -1,20 +1,43 @@
 import React, { useEffect, useState } from "react";
+import "./header.css";
 import DarkModeSwitch from "../others/DarkModeSwitch";
 import NavLogo from "../others/NavLogo";
-import NavBarLink from "../others/NavBarLink";
+import HamburgerMenu from "../others/HamburgerMenu";
+import NavBar from "../others/NavBar";
 
 const Header = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    console.log("Toggling menu");
+    setShowMenu(!showMenu);
+    console.log("Menu state:", !showMenu);
+  };
+
+  ///This code section was generated with chat GPT,
+  // I was struggling to close the menu when resizing to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1400) {
+        setShowMenu(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  ///End of generated code
+
   return (
     <header id="header">
       <div className="container">
         <NavLogo />
 
-        <div className="desktop">
-          <nav className="nav-bar">
-            <NavBarLink linkName="Features" url="#features" />
-            <NavBarLink linkName="Contact" url="#" />
-          </nav>
-        </div>
+        <NavBar showMenu={showMenu} toggleMenu={toggleMenu} />
 
         <DarkModeSwitch />
 
@@ -26,10 +49,7 @@ const Header = () => {
             </span>
           </a>
         </div>
-
-        <button className="hamburger-menu mobile" aria-label="Menu">
-          <span className="fa-regular fa-bars fa-2x"></span>
-        </button>
+        <HamburgerMenu showMenu={showMenu} toggleMenu={toggleMenu} />
       </div>
     </header>
   );

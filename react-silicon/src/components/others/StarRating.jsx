@@ -6,22 +6,29 @@ const StarRating = (props) => {
   const emptyStars = totalStars - fullStars;
   const ariaLabel = `Rating: ${fullStars} out of ${totalStars} stars`;
 
-  const fullStarIcon = (
-    <span className="fa-solid fa-star full-star fa-xs"></span>
+  const fullStarIcon = (index) => (
+    <span
+      key={`full-${index}`}
+      className="fa-solid fa-star full-star fa-xs"
+    ></span>
   );
-  const emptyStarIcon = (
-    <span className="fa-regular fa-star empty-star fa-xs"></span>
+  const emptyStarIcon = (index) => (
+    <span
+      key={`empty-${index}`}
+      className="fa-regular fa-star empty-star fa-xs"
+    ></span>
   );
 
   const stars = [];
 
   for (let index = 0; index < fullStars; index++) {
-    stars.push(fullStarIcon);
+    stars.push(fullStarIcon(index));
   }
 
   for (let index = 0; index < emptyStars; index++) {
-    stars.push(emptyStarIcon);
+    stars.push(emptyStarIcon(index));
   }
+
   return (
     <div className="star-rating" role="img" aria-label={ariaLabel}>
       {stars}

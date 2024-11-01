@@ -1,0 +1,125 @@
+/* -----|SUBSCRIBE SECTION START|------ */
+#subscribe {
+  .content {
+    background-color: var(--color-background-contrast);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+  .side {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .image {
+    max-height: 78px;
+  }
+
+  .headline {
+    max-width: 165px;
+    text-align: left;
+    font-size: var(--font-size-xl);
+  }
+  .inline-desktop {
+    display: none;
+  }
+
+  .form-subscribe {
+    display: flex;
+    width: 100%;
+  }
+
+  #emailsub {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-gray-400);
+    border-radius: 10px 0 0 10px;
+  }
+
+  #emailsub::placeholder {
+    position: relative;
+    left: -25px;
+    color: var(--color-text-light);
+    font-family: "Manrope", FontAwesome;
+    font-size: 1rem;
+  }
+  #emailsub:focus,
+  #emailsub:focus-visible {
+    border: 1px solid var(--color-primary);
+    box-shadow: 0 5px 15px -9px var(--color-primary);
+    outline: none;
+  }
+
+  #emailsub:valid {
+    border: 1px solid var(--color-sucess);
+    box-shadow: none;
+  }
+
+  #emailsub:not(:placeholder-shown):invalid {
+    border: 1px solid var(--color-error);
+    box-shadow: none;
+  }
+
+  #btn-submit-subscribe {
+    margin: 0;
+    border-radius: 0 10px 10px 0;
+  }
+}
+
+/* -----|SUBSCRIBE SECTION FINISH|------ */
+
+/* Media Queries */
+/* .desktop,
+.tablet {
+  display: none;
+}
+.mobile {
+  display: block;
+} */
+
+/*||Subscribe SECTION - tablet|| */
+@media (min-width: 768px) {
+  #subscribe {
+    .content {
+      padding: 3rem 1rem;
+      flex-direction: row;
+      align-items: center;
+    }
+    .side {
+      gap: 2rem;
+    }
+
+    .form-subscribe {
+      width: 320px;
+    }
+  }
+}
+
+/* SUBSCRIBE SECTION - desktop */
+@media (min-width: 1400px) {
+  #subscribe {
+    .headline {
+      max-width: 415px;
+      text-align: left;
+      font-size: var(--font-size-lead);
+    }
+
+    .inline-desktop {
+      display: inline;
+    }
+
+    .form-subscribe {
+      width: 475px;
+    }
+
+    #btn-submit-subscribe {
+      padding: 1rem 2rem;
+    }
+  }
+}

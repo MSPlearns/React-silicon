@@ -1,0 +1,97 @@
+#header {
+  z-index: 1001;
+  position: relative;
+  .nav-link {
+    margin-inline: 1rem;
+    font-weight: 600;
+    color: var(--color-text-nav-bar);
+    top: -2px;
+    transition: var(--transition-time);
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    padding: var(--container-padding);
+    align-items: center;
+  }
+
+  .container a {
+    position: relative;
+    z-index: 1001;
+  }
+
+  .hamburger-menu {
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    position: relative;
+  }
+}
+
+/* NOTE: Mobile menu styling from .show is at the beggining of media queries due to overridding issues */
+
+/* Media Queries */
+.desktop,
+.tablet {
+  display: none;
+}
+.mobile {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+  .mobile {
+    display: none;
+  }
+  .tablet {
+    display: block;
+  }
+
+  h1 {
+    font-size: calc(var(--1rem) * 2.75);
+  }
+
+  /* ||HEADER - tablet|| */
+  #header {
+    .container {
+      gap: 4rem;
+    }
+  }
+}
+
+/* ||HEADER - desktop|| */
+
+@media (min-width: 1400px) {
+  /* h1 {
+    font-size: calc(var(--1rem) * 3.5);
+  }
+  .mobile,
+  .tablet {
+    display: none;
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .container {
+    max-width: 1320px;
+  } */
+
+  /*||HEADER SECTION - desktop|| */
+  #header {
+    .container {
+      grid-template-columns: auto 1fr auto auto;
+      gap: 3rem;
+    }
+
+    #toggle-label {
+      color: var(--color-gray-700);
+    }
+  }
+}

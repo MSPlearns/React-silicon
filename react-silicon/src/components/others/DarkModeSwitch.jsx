@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./DarkModeSwitch.css";
 
 const DarkModeSwitch = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);

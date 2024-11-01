@@ -1,5 +1,6 @@
 import React from "react";
 import bellIcon from "/src/assets/images/subscribe-bell-notification-icon.svg";
+import "./subscribe.css";
 
 const Subscribe = () => {
   return (

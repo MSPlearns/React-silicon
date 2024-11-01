@@ -1,0 +1,64 @@
+/* Media Queries */
+/* .desktop,
+.tablet {
+  display: none;
+}
+.mobile {
+  display: block;
+} */
+
+/* Only visible on desktop */
+
+@media (min-width: 1400px) {
+  #how-continue {
+    .container {
+      margin: 7rem auto;
+      padding: 0 7rem;
+      display: grid;
+      gap: 4rem 2rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content {
+      text-align: left;
+      display: flex;
+      gap: 2rem;
+      flex-direction: column;
+      max-width: 400px;
+
+      .btn {
+        align-self: start;
+      }
+
+      h3 {
+        font-size: 2rem;
+      }
+
+      ul {
+        margin: auto 1.5rem;
+      }
+
+      li {
+        margin-bottom: 1rem;
+      }
+    }
+
+    #content-2 {
+      max-width: 500px;
+
+      .icon-cards {
+        display: flex;
+
+        .wrapper {
+          display: flex;
+          gap: 1rem;
+          flex-direction: column;
+          align-items: start;
+        }
+      }
+    }
+  }
+}

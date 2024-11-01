@@ -6,6 +6,7 @@ import logoipsum4 from "/src/assets/images/logoipsum-4.svg";
 import logoipsum5 from "/src/assets/images/logoipsum-5.svg";
 import logoipsum6 from "/src/assets/images/logoipsum-6.svg";
 import BrandCard from "../others/BrandCard";
+import "./brands.css";
 
 const Brands = () => {
   return (

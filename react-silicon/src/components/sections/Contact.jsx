@@ -1,5 +1,6 @@
 import React from "react";
 import FAQ from "./FAQ";
+import "./contact-faq.css";
 
 const Contact = () => {
   return (
@@ -17,7 +18,7 @@ const Contact = () => {
 
         <FAQ />
 
-        <div className="mobile">
+        <div className="mobile contact">
           <a
             href="#"
             id="contact-btn"

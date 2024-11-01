@@ -3,6 +3,7 @@ import howGraph from "/src/assets/images/how-continue-square-graph.svg";
 import howContacts from "/src/assets/images/how-continue-square-contact-list.svg";
 import IconOnSquareBackground from "../others/IconOnSquareBackground";
 import IconCard from "../others/IconCard";
+import "./how-continue.css";
 
 const HowContinue = () => {
   return (

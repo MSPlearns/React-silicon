@@ -1,6 +1,7 @@
 import React from "react";
 import phoneCard from "/src/assets/images/features-phone-with-card.svg";
 import FeatureCard from "../others/FeatureCard";
+import "./features.css";
 
 const Features = () => {
   return (

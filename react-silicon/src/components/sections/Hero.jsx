@@ -1,5 +1,6 @@
 import React from "react";
 import heroPhoneExample from "/src/assets/images/hero-phone-example.svg";
+import "./hero.css";
 
 const Hero = () => {
   return (

@@ -1,0 +1,36 @@
+/* -----|FOOTER SECTION|------ */
+footer {
+  font-size: 14px;
+  color: var(--color-text-light);
+  .container {
+    padding: var(--container-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+}
+/* -----||------ */
+
+/* Media Queries */
+/* .desktop,
+.tablet {
+  display: none;
+}
+.mobile {
+  display: block;
+} */
+
+@media (min-width: 768px) {
+  /*||FOOTER SECTION - tablet|| */
+  footer .container {
+    flex-direction: row;
+  }
+}
+
+/* ||unchanged desktop|| */
+
+/* @media (min-width: 1400px) {
+} */
