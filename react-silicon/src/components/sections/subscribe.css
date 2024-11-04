@@ -8,7 +8,7 @@
     align-items: center;
     align-items: flex-start;
     justify-content: space-evenly;
-    gap: 2rem;
+    gap: 1rem;
     padding: 2rem 1rem;
   }
   .side {
@@ -31,8 +31,18 @@
   }
 
   .form-subscribe {
+    position: relative;
     display: flex;
     width: 100%;
+  }
+
+  .form-error {
+    position: relative;
+    min-width: 120px;
+    top: -1rem;
+    left: 1rem;
+    color: var(--color-error);
+    font-size: 0.8rem;
   }
 
   #emailsub {
@@ -89,6 +99,7 @@
     .content {
       padding: 3rem 1rem;
       flex-direction: row;
+      flex-wrap: wrap;
       align-items: center;
     }
     .side {
@@ -97,6 +108,12 @@
 
     .form-subscribe {
       width: 320px;
+    }
+    .form-error {
+      position: relative;
+      min-width: 120px;
+      top: -2rem;
+      left: 4.5rem;
     }
   }
 }
@@ -120,6 +137,11 @@
 
     #btn-submit-subscribe {
       padding: 1rem 2rem;
+    }
+    .form-error {
+      min-width: 320px;
+      top: -2rem;
+      left: 16.5rem;
     }
   }
 }
