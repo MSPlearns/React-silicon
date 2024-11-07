@@ -1,3 +1,8 @@
+/* TO DO
+ -Fix styling so that the contact area is not jumping around 
+ when the accordion is opened/closed
+*/
+
 /* -----|FAQ SECTION START|------ */
 #faq .container {
   display: flex;

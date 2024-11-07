@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ReviewCard from "../others/ReviewCard";
 import "./reviews.css";
+//To do:
+// - Limit the number of reviews to 2
+// - Implement a validation for the fetch request
+// - Add a message for a failed request or no data (no reviews)
 
 const Reviews = () => {
   const [reviewItems, setReviewItems] = useState([]);

@@ -2,6 +2,10 @@ import React from "react";
 import FAQ from "./FAQ";
 import "./contact-faq.css";
 
+// To do:
+// - Turn the contact cards into a component with props
+// - Turn the mobile-only contact button into a component  (maybe?)
+
 const Contact = () => {
   return (
     <section id="faq">
@@ -32,7 +36,6 @@ const Contact = () => {
           <div className="card-container">
             <div className="contact-card">
               <span
-                id="phone-icon"
                 className="text-primary fa-sharp fa-solid fa-phone-volume"
                 role="img"
                 aria-label="telephone"
@@ -46,10 +49,9 @@ const Contact = () => {
 
             <div className="contact-card">
               <span
-                id="message-icon"
                 className="text-sucess fa-sharp fa-solid fa-comment-dots fa-flip-horizontal"
                 role="img"
-                aria-label="telephone"
+                aria-label="message"
               ></span>
               <span>Don&rsquo;t like phone calls?</span>
               <a href="#">
