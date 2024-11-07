@@ -67,7 +67,7 @@
 /* ||HEADER - desktop|| */
 
 @media (min-width: 1400px) {
-  /* h1 {
+  h1 {
     font-size: calc(var(--1rem) * 3.5);
   }
   .mobile,
@@ -81,7 +81,7 @@
 
   .container {
     max-width: 1320px;
-  } */
+  }
 
   /*||HEADER SECTION - desktop|| */
   #header {
