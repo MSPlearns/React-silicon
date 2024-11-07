@@ -23,12 +23,24 @@ const FAQ = () => {
     fetchFAQ();
   }, []);
 
+  const [selectedFaq, setSelectedFaq] = useState(null);
+  const handleSingleSelection = (id) => {
+    setSelectedFaq((prevSelectedFaq) => (prevSelectedFaq === id ? null : id));
+  };
+
   return (
     <div className="faqs-container">
       <h3 title="FAQ"></h3>
       <div className="questions-container">
         {faqItems.map((item) => (
-          <FaqCard key={item.id} title={item.title} content={item.content} />
+          <FaqCard
+            id={item.id}
+            key={item.id}
+            title={item.title}
+            content={item.content}
+            selected={selectedFaq === item.id}
+            onSelect={handleSingleSelection}
+          />
         ))}
       </div>
     </div>
