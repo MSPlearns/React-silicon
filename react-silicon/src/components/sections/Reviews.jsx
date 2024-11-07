@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReviewCard from "../others/ReviewCard";
 import "./reviews.css";
 
 const Reviews = () => {
+  const [reviewItems, setReviewItems] = useState([]);
+
+  const fetchReviews = async () => {
+    const res = await fetch(
+      "https://win24-assignment.azurewebsites.net/api/testimonials"
+    );
+    const data = await res.json();
+    setReviewItems(data);
+  };
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
   return (
     <section id="reviews">
       <div className="desktop">
@@ -11,20 +25,18 @@ const Reviews = () => {
             <h2>Clients are Loving Our App</h2>
           </div>
 
-          <ReviewCard
-            name="Fannie Summers"
-            jobTitle="Designer"
-            gender="girl"
-            rating="4"
-            reviewText="Sit pretium aliquam tempor, orci dolor sed maecenas rutrum sagittis. Laoreet posuere rhoncus, egestas lacus, egestas justo aliquam vel. Nisi vitae lectus hac hendrerit. Montes justo turpis sit amet."
-          />
-          <ReviewCard
-            name="Albert Flores"
-            jobTitle="Developer"
-            gender="boy"
-            rating="5"
-            reviewText="Nunc senectus leo vel venenatis accumsan vestibulum sollicitudin amet porttitor. Nisl bibendum nulla tincidunt eu enim ornare dictumst sit amet. Dictum pretium dolor tincidunt egestas eget nunc."
-          />
+          <>
+            {reviewItems.map((item) => (
+              <ReviewCard
+                key={item.id}
+                name={item.author}
+                jobRole={item.jobRole}
+                avatar={item.avatarUrl}
+                rating={item.starRating}
+                reviewText={item.comment}
+              />
+            ))}
+          </>
         </div>
       </div>
     </section>

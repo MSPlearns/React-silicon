@@ -15,8 +15,8 @@ const ReviewCard = (props) => {
         <p>{props.reviewText}</p>
         <ReviewProfileCard
           name={props.name}
-          jobTitle={props.jobTitle}
-          gender={props.gender}
+          jobRole={props.jobRole}
+          avatar={props.avatar}
         />
       </div>
     </div>
