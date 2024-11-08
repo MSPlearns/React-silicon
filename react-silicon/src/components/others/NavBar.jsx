@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import NavBarLink from "./NavBarLink";
 
-const NavBar = ({ showMenu, toggleMenu }) => {
+const NavBar = ({ showMenu, closeMenu }) => {
   console.log("NavBar showMenu prop:", showMenu);
   return (
     <div className={`desktop ${showMenu ? "show" : ""}`}>
       <nav className="nav-bar">
-        <NavBarLink
-          linkName="Features"
-          url="#features"
-          toggleMenu={toggleMenu}
-        />
-        <NavBarLink linkName="Contact" url="#" toggleMenu={toggleMenu} />
-        <NavBarLink linkName="FAQ" url="#faq" toggleMenu={toggleMenu} />
+        <NavBarLink linkName="Features" url="#features" closeMenu={closeMenu} />
+        <NavBarLink linkName="Contact" url="#" closeMenu={closeMenu} />
+        <NavBarLink linkName="FAQ" url="#faq" closeMenu={closeMenu} />
       </nav>
     </div>
   );

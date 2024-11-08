@@ -11,7 +11,13 @@ const Header = () => {
   const toggleMenu = () => {
     console.log("Toggling menu");
     setShowMenu(!showMenu);
-    console.log("Menu state:", !showMenu);
+    console.log("Menu state:", showMenu);
+  };
+
+  const closeMenu = () => {
+    console.log("Closing menu");
+    setShowMenu(false);
+    console.log("Menu state:", showMenu);
   };
 
   ///This code section was generated with chat GPT,
@@ -37,7 +43,7 @@ const Header = () => {
       <div className="container">
         <NavLogo />
 
-        <NavBar showMenu={showMenu} toggleMenu={toggleMenu} />
+        <NavBar showMenu={showMenu} closeMenu={closeMenu} />
 
         <DarkModeSwitch />
 
