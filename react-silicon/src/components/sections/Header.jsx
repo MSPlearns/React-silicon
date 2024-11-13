@@ -9,15 +9,11 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => {
-    console.log("Toggling menu");
     setShowMenu(!showMenu);
-    console.log("Menu state:", showMenu);
   };
 
   const closeMenu = () => {
-    console.log("Closing menu");
     setShowMenu(false);
-    console.log("Menu state:", showMenu);
   };
 
   ///This code section was generated with chat GPT,

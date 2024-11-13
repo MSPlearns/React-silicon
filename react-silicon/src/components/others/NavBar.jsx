@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import NavBarLink from "./NavBarLink";
 
 const NavBar = ({ showMenu, closeMenu }) => {
-  console.log("NavBar showMenu prop:", showMenu);
   return (
     <div className={`desktop ${showMenu ? "show" : ""}`}>
       <nav className="nav-bar">

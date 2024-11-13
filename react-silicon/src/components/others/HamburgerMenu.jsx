@@ -5,10 +5,7 @@ const HamburgerMenu = ({ toggleMenu }) => {
     <button
       className="hamburger-menu mobile tablet"
       aria-label="Menu"
-      onClick={() => {
-        console.log("Button clicked");
-        toggleMenu();
-      }}
+      onClick={toggleMenu}
     >
       <span className="fa-regular fa-bars fa-2x"></span>
     </button>
