@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import FaqCard from "../others/FaqCard";
 
 //To do:
-// URGENT FOR G GRADING: Make the accordion functional.
 // - Limit the number of faqs? Not sure
 // - Implement a validation for the fetch request
 // - Add a message for a failed request or no data
@@ -24,6 +23,7 @@ const FAQ = () => {
   }, []);
 
   const [selectedFaq, setSelectedFaq] = useState(null);
+
   const handleSingleSelection = (id) => {
     setSelectedFaq((prevSelectedFaq) => (prevSelectedFaq === id ? null : id));
   };
@@ -32,7 +32,7 @@ const FAQ = () => {
     <div className="faqs-container">
       <h3 title="FAQ"></h3>
       <div className="questions-container">
-        {faqItems.map((item) => (
+        {faqItems.map((item, index) => (
           <FaqCard
             id={item.id}
             key={item.id}
@@ -40,6 +40,8 @@ const FAQ = () => {
             content={item.content}
             selected={selectedFaq === item.id}
             onSelect={handleSingleSelection}
+            isFirst={index === 0}
+            isLast={index === faqItems.length - 1}
           />
         ))}
       </div>

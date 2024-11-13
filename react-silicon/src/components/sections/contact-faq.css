@@ -40,6 +40,7 @@
 }
 .content-container {
   background-color: var(--color-background-faq);
+  border-radius: 10px;
 }
 
 .faq-header {
@@ -53,41 +54,47 @@
   border-bottom: 1px solid var(--color-border-standard);
 }
 
+.faq-header.last-header.inactive {
+  border-bottom: none;
+}
+
 .faqs-container .content {
-  max-height: 0;
+  display: none;
   overflow: hidden;
   transition: var(--transition-time);
 }
 
 .faqs-container .content.active {
+  display: block;
   max-height: 600px;
   border-bottom: 1px solid var(--color-border-standard);
   font-size: var(--font-size-s);
   padding: 1rem 1.5rem;
 }
 
-#last-header,
-#last-content {
-  border: none;
+.fist-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid var(--color-border-standard);
 }
 
+.faqs-container .content.active.last-content {
+  border-bottom: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 .open,
 .close {
-  display: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   height: 1.5rem;
   width: 1.5rem;
   padding: 1rem;
   font-size: 0.75rem;
 }
 
-.open.active,
-.close.active {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.close.icon-background.active {
+.close.icon-background {
   background-color: var(--color-primary);
   color: var(--color-gray-100);
   box-shadow: 0 -15px 10px -6px

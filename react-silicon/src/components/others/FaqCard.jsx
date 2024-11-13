@@ -4,23 +4,25 @@ const faqCard = (props) => {
   return (
     <div className="content-container">
       <button
-        className="faq-header btn faq-btn"
         onClick={() => props.onSelect(props.id)}
+        className={`faq-header btn faq-btn
+          ${props.selected ? "active" : "inactive"} 
+          ${props.isFirst ? "first-header" : ""} 
+        ${props.isLast ? "last-header" : ""}`}
       >
         <h4>{props.title}</h4>
 
         <span
-          className={`close ${
-            props.selected ? "active" : ""
-          } fa fa-sharp fa-solid fa-angle-up btn icon-background shape-round`}
-        ></span>
-        <span
-          className={`open ${
-            props.selected ? "" : "active"
-          } fa fa-sharp fa-solid fa-angle-down btn icon-background shape-round`}
+          className={`fa fa-sharp fa-solid btn icon-background shape-round ${
+            props.selected ? "fa-angle-up close" : "fa-angle-down open"
+          }`}
         ></span>
       </button>
-      <div className="content active">
+      <div
+        className={`content 
+          ${props.selected ? "active" : ""} 
+        ${props.isLast ? "last-content" : ""}`}
+      >
         {props.selected ? <p>{props.content}</p> : null}
       </div>
     </div>
