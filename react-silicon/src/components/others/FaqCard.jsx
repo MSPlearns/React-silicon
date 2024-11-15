@@ -1,32 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { FaqContext } from "../../contexts/faqContext";
 
-const faqCard = (props) => {
+const FaqCard = ({ item, isFirst, isLast }) => {
+  const { selectedFaq, handleSingleSelection } = useContext(FaqContext);
+
   return (
     <div className="content-container">
       <button
-        onClick={() => props.onSelect(props.id)}
+        onClick={() => handleSingleSelection(item.id)}
         className={`faq-header btn faq-btn
-          ${props.selected ? "active" : "inactive"} 
-          ${props.isFirst ? "first-header" : ""} 
-        ${props.isLast ? "last-header" : ""}`}
+          ${selectedFaq === item.id ? "active" : "inactive"} 
+          ${isFirst ? "first-header" : ""} 
+          ${isLast ? "last-header" : ""}`}
       >
-        <h4>{props.title}</h4>
+        <h4>{item.title}</h4>
 
         <span
           className={`fa fa-sharp fa-solid btn icon-background shape-round ${
-            props.selected ? "fa-angle-up close" : "fa-angle-down open"
+            selectedFaq === item.id ? "fa-angle-up close" : "fa-angle-down open"
           }`}
         ></span>
       </button>
       <div
         className={`content 
-          ${props.selected ? "active" : ""} 
-        ${props.isLast ? "last-content" : ""}`}
+          ${selectedFaq === item.id ? "active" : ""} 
+          ${isLast ? "last-content" : ""}`}
       >
-        {props.selected ? <p>{props.content}</p> : null}
+        {selectedFaq === item.id ? <p>{item.content}</p> : null}
       </div>
     </div>
   );
 };
 
-export default faqCard;
+export default FaqCard;

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import FaqCard from "../others/FaqCard";
+import FaqProvider, { FaqContext } from "../../contexts/faqContext";
 
 //To do:
 // - Limit the number of faqs? Not sure
@@ -8,25 +9,8 @@ import FaqCard from "../others/FaqCard";
 // - Fix styling (see contact-faq.css)
 
 const FAQ = () => {
-  const [faqItems, setFAQItems] = useState([]);
-
-  const fetchFAQ = async () => {
-    const res = await fetch(
-      "https://win24-assignment.azurewebsites.net/api/faq"
-    );
-    const data = await res.json();
-    setFAQItems(data);
-  };
-
-  useEffect(() => {
-    fetchFAQ();
-  }, []);
-
-  const [selectedFaq, setSelectedFaq] = useState(null);
-
-  const handleSingleSelection = (id) => {
-    setSelectedFaq((prevSelectedFaq) => (prevSelectedFaq === id ? null : id));
-  };
+  const { faqItems, selectedFaq, handleSingleSelection } =
+    useContext(FaqContext);
 
   return (
     <div className="faqs-container">
@@ -34,12 +18,8 @@ const FAQ = () => {
       <div className="questions-container">
         {faqItems.map((item, index) => (
           <FaqCard
-            id={item.id}
             key={item.id}
-            title={item.title}
-            content={item.content}
-            selected={selectedFaq === item.id}
-            onSelect={handleSingleSelection}
+            item={item}
             isFirst={index === 0}
             isLast={index === faqItems.length - 1}
           />
@@ -49,4 +29,10 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+const FAQComplete = () => (
+  <FaqProvider>
+    <FAQ />
+  </FaqProvider>
+);
+
+export default FAQComplete;
