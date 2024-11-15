@@ -5,31 +5,90 @@ import "./subscribe.css";
 const Subscribe = () => {
   const [formData, setFormData] = useState({ email: "" });
   const [error, setError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [isValid, setIsValid] = useState(null);
+
+  const validateForm = (name, value) => {
+    setIsValid(true);
+    const newError = {};
+
+    if (value.trim() === "") {
+      setIsValid(false);
+      newError[name] = "The email field is required.";
+    } else if (
+      !/^[a-zA-Z0-9_-]+@[a-zA-Z0-9.-]{2,}\.[a-zA-Z]{2,}$/.test(value)
+    ) {
+      setIsValid(false);
+      newError[name] = "The email field must be a valid email address.";
+    }
+
+    setError(newError);
+
+    return isValid;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    if (value.trim() === "") {
-      setError((prevError) => ({
-        ...prevError,
-        [name]: "**This field is required",
-      }));
-    } else {
-      setError((prevError) => ({ ...prevError, [name]: "" }));
-    }
+    validateForm(name, value);
   };
 
-  const handleSubmit = (e) => {
+  const handleReturnForm = () => {
+    setSubmitted(false);
+    setIsValid(null);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const value = formData.email;
 
-    if (value.trim() === "") {
-      alert("Please enter a valid email address.");
+    if (!validateForm("email", formData.email)) {
+      alert(`Couldn't submit the form. ${error.email}`);
+      return;
+    }
+
+    const res = await fetch(
+      `https://win24-assignment.azurewebsites.net/api/forms/subscribe`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    if (res.ok) {
+      setSubmitted(true);
+      setFormData({ email: "" });
     } else {
-      alert("Thank you for subscribing to our newletter!");
+      alert("Something went wrong. Please try again later.");
     }
   };
+
+  if (submitted) {
+    return (
+      <section id="subscribe">
+        <div className="container">
+          <div className="content">
+            <div className="side">
+              <img className="image" src={bellIcon} alt="Bell icon" />
+              <h2 className="headline">
+                Thank you for subscribing to our newsletter!
+              </h2>
+            </div>
+
+            <button
+              className="btn btn-primary shape-rectangular"
+              onClick={handleReturnForm}
+            >
+              Return
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="subscribe">
@@ -48,6 +107,7 @@ const Subscribe = () => {
 
           <form className="form-subscribe" onSubmit={handleSubmit} noValidate>
             <input
+              className={isValid === null ? "" : isValid ? "valid" : "invalid"}
               name="email"
               id="emailsub"
               type="email"
@@ -65,7 +125,18 @@ const Subscribe = () => {
               value="Subscribe"
             />
           </form>
-          <span className="form-error">{error.email && error.email}</span>
+          <span
+            className={`form-message ${
+              isValid === null ? "" : isValid ? "valid" : "invalid"
+            }`}
+          >
+            {isValid === null ? null : isValid ? (
+              <i className="fa-solid fa-circle-check"> </i>
+            ) : (
+              <i className="fa-solid fa-circle-exclamation"> </i>
+            )}
+            {error.email && error.email}
+          </span>
         </div>
       </div>
     </section>
