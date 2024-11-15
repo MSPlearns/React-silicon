@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { SubscribedContext } from "../../contexts/subscribedContext"; //ToDo for VG
 import bellIcon from "/src/assets/images/subscribe-bell-notification-icon.svg";
 import "./subscribe.css";
-
-//ToDo for VG
 
 //To be able to reuse the form in the Contact page:::::
 //Form into a separate component,
@@ -13,9 +12,10 @@ import "./subscribe.css";
 //Create a context so that navigating to different subpages keeps the submited state in this section - roughly like a login state
 
 const Subscribe = () => {
+  const { isSubscribed, setIsSubscribed } = useContext(SubscribedContext);
+
   const [formData, setFormData] = useState({ email: "" });
   const [error, setError] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const [isValid, setIsValid] = useState(null);
 
   const validateForm = (name, value) => {
@@ -26,7 +26,7 @@ const Subscribe = () => {
       setIsValid(false);
       newError[name] = "The email field is required.";
     } else if (
-      !/^[a-zA-Z0-9_-]+@[a-zA-Z0-9.-]{2,}\.[a-zA-Z]{2,}$/.test(value)
+      !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]{2,}\.[a-zA-Z]{2,}$/.test(value)
     ) {
       setIsValid(false);
       newError[name] = "The email field must be a valid email address.";
@@ -45,8 +45,9 @@ const Subscribe = () => {
   };
 
   const handleReturnForm = () => {
-    setSubmitted(false);
+    setIsSubscribed(false);
     setIsValid(null);
+    setFormData({ email: "" });
   };
 
   const handleSubmit = async (e) => {
@@ -69,36 +70,11 @@ const Subscribe = () => {
     );
 
     if (res.ok) {
-      setSubmitted(true);
-      setFormData({ email: "" });
+      setIsSubscribed(true);
     } else {
       alert("Something went wrong. Please try again later.");
     }
   };
-
-  if (submitted) {
-    return (
-      <section id="subscribe">
-        <div className="container">
-          <div className="content">
-            <div className="side">
-              <img className="image" src={bellIcon} alt="Bell icon" />
-              <h2 className="headline">
-                Thank you for subscribing to our newsletter!
-              </h2>
-            </div>
-
-            <button
-              className="btn btn-primary shape-rectangular"
-              onClick={handleReturnForm}
-            >
-              <i className="fa-solid fa-arrows-rotate"></i>
-            </button>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="subscribe">
@@ -106,47 +82,68 @@ const Subscribe = () => {
         <div className="content">
           <div className="side">
             <img className="image" src={bellIcon} alt="Bell icon" />
-            <h2 className="headline">
-              Subscribe to our newsletter{" "}
-              <span className="inline-desktop">
-                {" "}
-                to stay informed about latest updates
-              </span>
-            </h2>
+            {isSubscribed ? (
+              <h2 className="headline">
+                Thank you for subscribing to our newsletter!
+              </h2>
+            ) : (
+              <h2 className="headline">
+                Subscribe to our newsletter{" "}
+                <span className="inline-desktop">
+                  {" "}
+                  to stay informed about latest updates
+                </span>
+              </h2>
+            )}
           </div>
 
-          <form className="form-subscribe" onSubmit={handleSubmit} noValidate>
-            <input
-              className={isValid === null ? "" : isValid ? "valid" : "invalid"}
-              name="email"
-              id="emailsub"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="
-              &#xf0e0;   Your email"
-            />
-
-            <input
-              className="btn btn-primary"
-              id="btn-submit-subscribe"
-              type="submit"
-              value="Subscribe"
-            />
-          </form>
-          <span
-            className={`form-message ${
-              isValid === null ? "" : isValid ? "valid" : "invalid"
-            }`}
-          >
-            {isValid === null ? null : isValid ? (
-              <i className="fa-solid fa-circle-check"> </i>
-            ) : (
-              <i className="fa-solid fa-circle-exclamation"> </i>
-            )}
-            {error.email && error.email}
-          </span>
+          {isSubscribed ? (
+            <button
+              className="btn btn-primary shape-rectangular"
+              onClick={handleReturnForm}
+            >
+              <i className="fa-solid fa-arrows-rotate"></i>
+            </button>
+          ) : (
+            <>
+              <form
+                className="form-subscribe"
+                onSubmit={handleSubmit}
+                noValidate
+              >
+                <input
+                  className={
+                    isValid === null ? "" : isValid ? "valid" : "invalid"
+                  }
+                  name="email"
+                  id="emailsub"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="&#xf0e0;   Your email"
+                />
+                <input
+                  className="btn btn-primary"
+                  id="btn-submit-subscribe"
+                  type="submit"
+                  value="Subscribe"
+                />
+              </form>
+              <span
+                className={`form-message ${
+                  isValid === null ? "" : isValid ? "valid" : "invalid"
+                }`}
+              >
+                {isValid === null ? null : isValid ? (
+                  <i className="fa-solid fa-circle-check"> </i>
+                ) : (
+                  <i className="fa-solid fa-circle-exclamation"> </i>
+                )}
+                {error.email && error.email}
+              </span>
+            </>
+          )}
         </div>
       </div>
     </section>
