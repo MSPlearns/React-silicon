@@ -1,6 +1,7 @@
 import React from "react";
 import FAQ from "./FAQ";
 import "./contact-faq.css";
+import { Link } from "react-router-dom";
 
 // To do:
 // - Turn the contact cards into a component with props
@@ -41,10 +42,10 @@ const Contact = () => {
                 aria-label="telephone"
               ></span>
               <span>Still have questions?</span>
-              <a href="#">
+              <Link to="/contact">
                 <span className="text-primary">Contact us</span>
                 <span className="fa-sharp fa-solid fa-arrow-right text-primary"></span>
-              </a>
+              </Link>
             </div>
 
             <div className="contact-card">
@@ -54,10 +55,10 @@ const Contact = () => {
                 aria-label="message"
               ></span>
               <span>Don&rsquo;t like phone calls?</span>
-              <a href="#">
+              <Link to="/contact">
                 <span className="text-sucess">Contact us</span>
                 <span className="fa-sharp fa-solid fa-arrow-right text-sucess"></span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

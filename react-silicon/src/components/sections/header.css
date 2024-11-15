@@ -9,6 +9,11 @@
     transition: var(--transition-time);
   }
 
+  .nav-link.active {
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+
   .container {
     display: grid;
     grid-template-columns: 1fr auto auto;

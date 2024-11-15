@@ -44,12 +44,13 @@ const Header = () => {
         <DarkModeSwitch />
 
         <div className="desktop">
-          <a href="#" id="auth-signin" className="plain-link">
-            <span className="btn btn-primary shape-rectangular btn-shadow-out">
-              <span className="fa-light fa-user-large"></span>
-              <span>Sign in / up</span>{" "}
-            </span>
-          </a>
+          <button
+            id="auth-signin"
+            className="btn btn-primary shape-rectangular btn-shadow-out"
+          >
+            <span className="fa-light fa-user-large"></span>
+            <span>Sign in / up</span>{" "}
+          </button>
         </div>
         <HamburgerMenu showMenu={showMenu} toggleMenu={toggleMenu} />
       </div>

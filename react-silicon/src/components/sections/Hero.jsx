@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import heroPhoneExample from "/src/assets/images/hero-phone-example.svg";
 import "./hero.css";
 
@@ -17,7 +18,12 @@ const Hero = () => {
             </div>
 
             <div className="card download-app">
-              <a className="plain-link btn-market" id="AppStore-btn" href="#">
+              <a
+                className="plain-link btn-market"
+                id="AppStore-btn"
+                href="https://www.apple.com/app-store/"
+                target="_blank"
+              >
                 <img
                   className="app-logo"
                   src="https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg"
@@ -26,7 +32,12 @@ const Hero = () => {
                 <span className="app-store">App Store</span>
               </a>
 
-              <a className="plain-link btn-market" id="GooglePlay-btn" href="#">
+              <a
+                className="plain-link btn-market"
+                id="GooglePlay-btn"
+                href="https://play.google.com/"
+                target="_blank"
+              >
                 <img
                   className="app-logo"
                   src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg"
@@ -37,7 +48,7 @@ const Hero = () => {
             </div>
 
             <div className="card discover-more">
-              <a href="#features">
+              <Link to="#features">
                 <button className="btn plain-link icon-background shape-round">
                   <i
                     name="icon"
@@ -45,7 +56,7 @@ const Hero = () => {
                   ></i>
                 </button>
                 <span>Discover more</span>
-              </a>
+              </Link>
             </div>
           </div>
 

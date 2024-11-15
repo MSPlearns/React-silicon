@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./DarkModeSwitch.css";
 
+//ToDo for VG:
+//- Add a context to manage the dark mode state across pages. Apparently is the usual way of doing it?? (why?)
+
 const DarkModeSwitch = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 

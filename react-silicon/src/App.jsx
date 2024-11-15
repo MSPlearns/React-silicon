@@ -1,29 +1,33 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./app.css";
-import Header from "./Components/Sections/Header";
-import Hero from "./Components/Sections/Hero";
-import Brands from "./Components/Sections/Brands";
-import Features from "./Components/Sections/Features";
-import How from "./Components/Sections/How";
-import HowContinue from "./Components/Sections/HowContinue";
-import Reviews from "./Components/Sections/Reviews";
-import Contact from "./Components/Sections/Contact";
-import Subscribe from "./Components/Sections/Subscribe";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import Header from "./components/sections/Header";
 import Footer from "./Components/Sections/Footer";
+import Subscribe from "./Components/Sections/Subscribe";
+import Features from "./pages/Features";
+import FAQ from "./pages/FAQ";
+
+//Todo - if there's time:
+//-Add transitions so the page renders smoothly (is very abrupt now)
+//-Add a breadcrumb navigation component
+//-Add a "Coming soon" page for blank pages
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <Hero />
-      <Brands />
-      <Features />
-      <How />
-      <HowContinue />
-      <Reviews />
-      <Contact />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/faq" element={<FAQ />} />
+        </Routes>
+      </main>
       <Subscribe />
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

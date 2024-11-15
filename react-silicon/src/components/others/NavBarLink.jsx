@@ -1,15 +1,16 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const NavBarLink = ({ url, linkName, closeMenu }) => {
   return (
-    <a
+    <NavLink
       id="main-menu"
       className="plain-link nav-link"
-      href={url}
+      to={url}
       onClick={closeMenu}
     >
       {linkName}
-    </a>
+    </NavLink>
   );
 };
 

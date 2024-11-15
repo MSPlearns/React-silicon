@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavLogo = () => {
   const [logoSrc, setLogoSrc] = useState("/logo/silicon-logo-light.svg");
@@ -21,10 +22,11 @@ const NavLogo = () => {
       window.removeEventListener("themeChange", updateLogo);
     };
   }, []);
+
   return (
-    <a href="index.html">
+    <Link to="/">
       <img src={logoSrc} alt="Silicon company logo" />
-    </a>
+    </Link>
   );
 };
 

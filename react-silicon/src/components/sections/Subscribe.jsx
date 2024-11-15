@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import bellIcon from "/src/assets/images/subscribe-bell-notification-icon.svg";
 import "./subscribe.css";
 
+//ToDo for VG
+
+//To be able to reuse the form in the Contact page:::::
+//Form into a separate component,
+//Email input into a separate component,
+//Handle change and submit in form, pass down with props. or useContext? think about it.
+
+//For myself: Fix how the error span position is styled D:
+//Create a context so that navigating to different subpages keeps the submited state in this section - roughly like a login state
+
 const Subscribe = () => {
   const [formData, setFormData] = useState({ email: "" });
   const [error, setError] = useState("");
@@ -82,7 +92,7 @@ const Subscribe = () => {
               className="btn btn-primary shape-rectangular"
               onClick={handleReturnForm}
             >
-              Return
+              <i className="fa-solid fa-arrows-rotate"></i>
             </button>
           </div>
         </div>
@@ -144,19 +154,3 @@ const Subscribe = () => {
 };
 
 export default Subscribe;
-
-//ToDo for VG
-
-//To be able to reuse the form in the Contact page:::::
-//Form into a separate component,
-//Email input into a separate component,
-//Handle change and submit in form, pass down with props
-//Add validation for input with regex
-
-//To send form data to the API::::::
-//Make handleSubmit = async (e)
-//Add a fetch request to the API wirh the form data
-//add a new state "submitted" to show a message when the form is submitted -> as a new render?
-//Change error message if the fetch request fails
-
-//For myself: Fix how the error span position is styled D:

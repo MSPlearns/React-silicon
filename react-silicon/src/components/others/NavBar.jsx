@@ -5,9 +5,9 @@ const NavBar = ({ showMenu, closeMenu }) => {
   return (
     <div className={`desktop ${showMenu ? "show" : ""}`}>
       <nav className="nav-bar">
-        <NavBarLink linkName="Features" url="#features" closeMenu={closeMenu} />
-        <NavBarLink linkName="Contact" url="#" closeMenu={closeMenu} />
-        <NavBarLink linkName="FAQ" url="#faq" closeMenu={closeMenu} />
+        <NavBarLink linkName="Features" url="/features" closeMenu={closeMenu} />
+        <NavBarLink linkName="Contact" url="/contact" closeMenu={closeMenu} />
+        <NavBarLink linkName="FAQ" url="/faq" closeMenu={closeMenu} />
       </nav>
     </div>
   );
