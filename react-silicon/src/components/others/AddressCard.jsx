@@ -15,7 +15,7 @@ const AddressCard = ({ center, address, phone }) => {
 				</div>
 				<div className='item'>
 					<i className='fa fa-solid fa-clock'></i>
-					<div className='wrapper'>
+					<div className='hours'>
 						<p className='weekdays'>
 							<span className='bold'>Mon - Thu:</span> 9:00 am - 8:00 pm
 						</p>
