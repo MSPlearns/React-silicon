@@ -1,91 +1,92 @@
 /* -----|SUBSCRIBE SECTION START|------ */
 #subscribe {
-  .content {
-    background-color: var(--color-background-contrast);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 1rem;
-    padding: 2rem 1rem;
-  }
-  .side {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
+	.content {
+		background-color: var(--color-background-contrast);
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+		gap: 1rem;
+		padding: 2rem 1rem;
+	}
+	.side {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
 
-  .image {
-    max-height: 78px;
-  }
+	.image {
+		max-height: 78px;
+	}
 
-  .headline {
-    max-width: 165px;
-    text-align: left;
-    font-size: var(--font-size-xl);
-  }
-  .inline-desktop {
-    display: none;
-  }
+	.headline {
+		max-width: 165px;
+		text-align: left;
+		font-size: var(--font-size-xl);
+	}
+	.inline-desktop {
+		display: none;
+	}
 
-  .form-subscribe {
-    position: relative;
-    display: flex;
-    width: 100%;
-  }
+	.form-subscribe {
+		position: relative;
+		display: flex;
+		width: 100%;
+	}
 
-  .form-message {
-    font-size: 0.8rem;
-    align-self: flex-start;
-    position: relative;
-    min-width: 120px;
-    top: -1rem;
-    left: 0.5rem;
-  }
+	.form-message {
+		font-size: 0.8rem;
+		align-self: flex-start;
+		position: relative;
+		min-width: 120px;
+		top: -1rem;
+		left: 0.5rem;
+	}
 
-  .invalid {
-    color: var(--color-error);
-  }
-  .valid {
-    color: var(--color-sucess);
-  }
+	.invalid {
+		color: var(--color-error);
+	}
+	.valid {
+		color: var(--color-sucess);
+	}
 
-  #emailsub {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--color-gray-400);
-    border-radius: 10px 0 0 10px;
-  }
+	#emailsub {
+		width: 100%;
+		/* padding: 10px; */
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--color-gray-400);
+		border-radius: 10px 0 0 10px;
+	}
 
-  #emailsub::placeholder {
-    position: relative;
-    left: 0.5rem;
-    color: var(--color-text-light);
-    font-family: "Manrope", FontAwesome;
-    font-size: 1rem;
-  }
-  #emailsub:focus,
-  #emailsub:focus-visible {
-    border: 1px solid var(--color-primary);
-    box-shadow: 0 5px 15px -9px var(--color-primary);
-    outline: none;
-  }
+	#emailsub::placeholder {
+		position: relative;
+		left: 0.5rem;
+		color: var(--color-text-light);
+		font-family: "Manrope", FontAwesome;
+		font-size: 1rem;
+	}
+	#emailsub:focus,
+	#emailsub:focus-visible {
+		border: 1px solid var(--color-primary);
+		box-shadow: 0 5px 15px -9px var(--color-primary);
+		outline: none;
+	}
 
-  #emailsub.valid {
-    border: 1px solid var(--color-sucess);
-    box-shadow: none;
-  }
+	#emailsub.valid {
+		border: 1px solid var(--color-sucess);
+		box-shadow: none;
+	}
 
-  #emailsub.invalid {
-    border: 1px solid var(--color-error);
-    box-shadow: none;
-  }
+	#emailsub.invalid {
+		border: 1px solid var(--color-error);
+		box-shadow: none;
+	}
 
-  #btn-submit-subscribe {
-    margin: 0;
-    border-radius: 0 10px 10px 0;
-  }
+	#btn-submit-subscribe {
+		margin: 0;
+		border-radius: 0 10px 10px 0;
+	}
 }
 
 /* -----|SUBSCRIBE SECTION FINISH|------ */
@@ -101,53 +102,53 @@
 
 /*||Subscribe SECTION - tablet|| */
 @media (min-width: 768px) {
-  #subscribe {
-    .content {
-      padding: 3rem 1rem;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .side {
-      gap: 2rem;
-    }
+	#subscribe {
+		.content {
+			padding: 3rem 1rem;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+		}
+		.side {
+			gap: 2rem;
+		}
 
-    .form-subscribe {
-      width: 320px;
-    }
-    .form-message {
-      position: relative;
-      min-width: 120px;
-      top: -2rem;
-      left: 5.5rem;
-    }
-  }
+		.form-subscribe {
+			width: 320px;
+		}
+		.form-message {
+			position: relative;
+			min-width: 120px;
+			top: -2rem;
+			left: 5.5rem;
+		}
+	}
 }
 
 /* SUBSCRIBE SECTION - desktop */
 @media (min-width: 1400px) {
-  #subscribe {
-    .headline {
-      max-width: 415px;
-      text-align: left;
-      font-size: var(--font-size-lead);
-    }
+	#subscribe {
+		.headline {
+			max-width: 415px;
+			text-align: left;
+			font-size: var(--font-size-lead);
+		}
 
-    .inline-desktop {
-      display: inline;
-    }
+		.inline-desktop {
+			display: inline;
+		}
 
-    .form-subscribe {
-      width: 475px;
-    }
+		.form-subscribe {
+			width: 475px;
+		}
 
-    #btn-submit-subscribe {
-      padding: 1rem 2rem;
-    }
-    .form-message {
-      min-width: 320px;
-      top: -2rem;
-      left: 15rem;
-    }
-  }
+		#btn-submit-subscribe {
+			padding: 1rem 2rem;
+		}
+		.form-message {
+			min-width: 320px;
+			top: -2rem;
+			left: 15rem;
+		}
+	}
 }

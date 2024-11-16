@@ -1,0 +1,141 @@
+#contact {
+	background-color: var(--color-background-contrast);
+	padding-block: 2rem;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		align-items: center;
+	}
+
+	.wrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	/* --------| Contact us + contact cards section    |--------- */
+	.headline {
+		font-size: 1.875rem;
+		margin-bottom: 1rem;
+	}
+
+	.content {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		justify-content: center;
+	}
+	.contact-card {
+		display: grid;
+		width: 100%;
+		gap: 2.5rem;
+		grid-template-columns: 1fr 2fr;
+		padding: 1.5rem;
+		border-radius: 10px;
+		background-color: var(--color-background-main);
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease-in-out;
+
+		&:hover {
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+		}
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0rem;
+		}
+
+		.icon {
+			padding: 1.5rem;
+			height: auto;
+			font-size: 1.5rem;
+			color: var(--color-primary);
+			align-self: flex-start;
+			justify-self: flex-start;
+		}
+
+		.card-header {
+			font-size: 1.25rem;
+		}
+
+		a.link {
+			color: var(--color-primary);
+			text-decoration: underline;
+			transition: all 0.3s ease-in-out;
+		}
+	}
+}
+/* --------| Form section    |--------- */
+
+#contact .contact-form {
+	width: 100%;
+	padding: 1.5rem 2.5rem;
+	border-radius: 10px;
+	background-color: var(--color-background-main);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease-in-out;
+
+	h3.headline {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+	}
+
+	label {
+		display: block;
+		color: var(--color-text-headers);
+		font-weight: 700;
+		text-align: left;
+	}
+
+	.form-control,
+	option {
+		width: 100%;
+		padding: 0.5rem 1rem;
+		margin-bottom: 1rem;
+		border: 1px solid var(--color-primary);
+		border-radius: 5px;
+		background-color: var(--color-background-contrast);
+		color: var(--color-text-light);
+		font-family: "Manrope", FontAwesome;
+		font-size: 1.2rem;
+		transition: all 0.3s ease-in-out;
+
+		width: 100%;
+		padding: 10px;
+		border: 1px solid var(--color-gray-400);
+		border-radius: 10px;
+
+		&:focus,
+		&:focus-visible {
+			border: 1px solid var(--color-primary);
+			box-shadow: 0 5px 15px -9px var(--color-primary);
+			outline: none;
+		}
+		&::placeholder {
+			position: relative;
+			left: 0.5rem;
+			color: var(--color-text-light);
+		}
+
+		.valid {
+			border: 1px solid var(--color-sucess);
+			box-shadow: none;
+		}
+
+		.invalid {
+			border: 1px solid var(--color-error);
+			box-shadow: none;
+		}
+	}
+
+	select option {
+		background-color: var(--color-background-main);
+	}
+}
