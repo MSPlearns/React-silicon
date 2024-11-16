@@ -9,7 +9,6 @@ import "./subscribe.css";
 //Handle change and submit in form, pass down with props. or useContext? think about it.
 
 //For myself: Fix how the error span position is styled D:
-//Create a context so that navigating to different subpages keeps the submited state in this section - roughly like a login state
 
 const Subscribe = () => {
   const { isSubscribed, setIsSubscribed } = useContext(SubscribedContext);

@@ -1,10 +1,12 @@
 import React from "react";
-import Hero from "../Components/Sections/Hero";
+import ContactUs from "../components/sections/ContactUs";
+import FindUs from "../components/sections/FindUs";
 
 const Contact = () => {
   return (
     <>
-      <Hero />
+      <ContactUs />
+      <FindUs />
     </>
   );
 };

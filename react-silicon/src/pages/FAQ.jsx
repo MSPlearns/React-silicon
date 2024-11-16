@@ -1,10 +1,10 @@
 import React from "react";
-import ContactFAQ from "../components/sections/ContactFAQ";
+import Faq from "../components/sections/Faq";
 
 const Home = () => {
   return (
     <>
-      <ContactFAQ />
+      <Faq />
     </>
   );
 };
