@@ -41,7 +41,7 @@ const ContactUsForm = () => {
 
 			<button
 				className='btn btn-primary shape-rectangular btn-shadow-out'
-				id='btn-submit-subscribe'
+				id='btn-submit-contact'
 				type='submit'
 			>
 				Make an appointment

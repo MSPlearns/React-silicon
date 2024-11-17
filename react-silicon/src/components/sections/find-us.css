@@ -38,6 +38,9 @@
 			justify-content: flex-start;
 			align-items: center;
 			text-align: left;
+			.fa {
+				color: var(--color-primary);
+			}
 		}
 	}
 	.icon-bar {
@@ -55,6 +58,7 @@
 		display: block;
 		width: 80%;
 		height: auto;
+		border-radius: 10px;
 		/* height: ; */
 	}
 }
@@ -65,10 +69,6 @@
 		.container {
 			flex-direction: row;
 			gap: 0rem;
-
-			/* display: flex; */
-			/* justify-content: center; */
-			/* align-items: center; */
 			padding-block: 4rem;
 		}
 
@@ -87,7 +87,7 @@
 
 		.icon-bar {
 			gap: 0.5rem;
-			justify-content: space-evenly;
+			/* justify-content: space-evenly; */
 		}
 
 		.map {
@@ -96,6 +96,64 @@
 			object-fit: cover;
 			width: 60%;
 			height: 500px;
+		}
+	}
+}
+
+/* -----DESKTOP----- */
+@media (min-width: 1400px) {
+	#find-us {
+		/* .container {
+		display: flex;
+	
+		justify-content: center;
+		align-items: center;
+		
+		gap: 5rem;
+	} */
+
+		.container {
+			flex-direction: row;
+			gap: 4rem;
+			padding-block: 10rem 5rem;
+		}
+
+		.content {
+			align-items: flex-start;
+			margin-top: 3rem;
+			text-align: left;
+			width: 50%;
+			gap: 4rem;
+		}
+
+		.addressCard {
+			align-items: flex-start;
+			gap: 1.25rem;
+			width: 90%;
+
+			.wrapper {
+				gap: 0.5rem;
+			}
+
+			.item {
+				gap: 0.5rem;
+			}
+		}
+
+		.icon-bar {
+			display: flex;
+			width: 80%;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 1rem;
+			.icon {
+				font-size: 1.5rem;
+			}
+		}
+
+		.map {
+			display: block;
+			width: 50%;
 		}
 	}
 }
