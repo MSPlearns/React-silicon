@@ -77,12 +77,12 @@
 #contact .contact-form {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: stretch;
 	width: 100%;
 	padding: 1.5rem 2.5rem;
 	border-radius: 10px;
 	background-color: var(--color-background-main);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 10px var(--color-shadows-standard);
 	transition: all 0.3s ease-in-out;
 
 	h3.headline {
@@ -110,11 +110,6 @@
 		font-family: "Manrope", FontAwesome;
 		font-size: 1.2rem;
 		transition: all 0.3s ease-in-out;
-
-		width: 100%;
-		padding: 10px;
-		border: 1px solid var(--color-gray-400);
-		border-radius: 10px;
 
 		&:focus,
 		&:focus-visible {
@@ -238,7 +233,7 @@
 /* -------DESKTOP-------- */
 @media (min-width: 1400px) {
 	#contact {
-		padding-block: 2rem;
+		/* padding-block: 2rem; */
 
 		.container {
 			flex-direction: row;
@@ -296,16 +291,12 @@
 
 		label {
 			margin-block: 0.5rem;
-			/* display: block;
-			color: var(--color-text-headers);
-			font-weight: 700;
-			text-align: left; */
 		}
 
 		.form-control,
 		option {
 			width: 100%;
-			padding: 0.5rem 1rem;
+			padding: 10px;
 			margin-bottom: 1rem;
 			border: 1px solid var(--color-primary);
 			border-radius: 5px;
@@ -314,9 +305,6 @@
 			font-family: "Manrope", FontAwesome;
 			font-size: 1.2rem;
 			transition: all 0.3s ease-in-out;
-
-			width: 100%;
-			padding: 10px;
 			border: 1px solid var(--color-gray-400);
 			border-radius: 10px;
 		}

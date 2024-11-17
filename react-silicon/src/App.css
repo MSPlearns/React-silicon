@@ -9,7 +9,7 @@
 	--color-white-opacity-95: hsla(0, 0%, 100%, 0.95);
 	--color-white-opacity-50: hsla(0, 0%, 100%, 0.5);
 	--color-primary-opacity-8: hsla(239, 85%, 67%, 0.08);
-	--color-primary-dark-semitransparent: hsla(237, 41%, 22%, 0.98);
+	--color-primary-dark-semitransparent: hsla(243, 50%, 24%, 0.98);
 	/* Greyscale */
 	--color-gray-100: #f3f6ff;
 	--color-gray-200: #eff2fc;
@@ -87,7 +87,7 @@ html {
 	--color-button-round: var(--color-white-opacity-5);
 	--color-button-contrast: var(--color-gray-100);
 	--color-text-nav-bar: hsla(0, 0%, 100%, 0.85);
-	--color-shadows-standard: rgba(0, 0, 0, 0.377);
+	--color-shadows-standard: var(--color-primary-dark-semitransparent);
 	--color-border-standard: var(--color-gray-700);
 	--color-background-mobile-menu: var(--color-primary-dark-semitransparent);
 }

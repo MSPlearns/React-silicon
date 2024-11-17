@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // ToDO:
-// 2. Implement conditional rendering for the form and the success message
-// 3. Implement a validation context with the validation logic, all forms can use the same context
+// Could a validation context with the validation logic be useful, so all forms can use the same context for their validation? i.ex. email field etc
 
 const ContactUsForm = () => {
 	const [formData, setFormData] = useState({
@@ -10,171 +9,170 @@ const ContactUsForm = () => {
 		email: "",
 		specialist: "",
 	});
+
+	const [touchedFields, setTouchedFields] = useState({
+		fullName: false,
+		email: false,
+		specialist: false,
+	});
+
+	const [error, setError] = useState({
+		fullName: "",
+		email: "",
+		specialist: "",
+	});
+
 	const [isSubmitted, setIsSubmitted] = useState(false);
-	const [errorFullName, setErrorFullName] = useState("");
-	const [errorEmail, setErrorEmail] = useState("");
-	const [errorSpecialist, setErrorSpecialist] = useState("");
-	const [validForm, setValidForm] = useState(null);
-	const [validFullName, setValidFullName] = useState(null);
-	const [validEmail, setValidEmail] = useState(null);
-	const [validSpecialist, setValidSpecialist] = useState(null);
+
+	const [valid, setValid] = useState({
+		fullName: null,
+		email: null,
+		specialist: null,
+		form: false,
+	});
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+
+		setFormData((prevState) => ({
+			...prevState,
+			[name]: value,
+		}));
+
+		setTouchedFields((prevState) => ({
+			...prevState,
+			[name]: true,
+		}));
+	};
 
 	const validateFullName = (value) => {
-		console.log("validating full name");
-		// setValidFullName(true);
 		const newError = [];
+
 		if (!value || value.trim() === "") {
-			setValidFullName(false);
-			newError.push(`The name field is required.`);
-		} else if (!/^(?=.*\s)[a-zA-Z\s]{2,}$/.test(value)) {
-			setValidFullName(false);
-			newError.push(`The name can only contain letters.`);
+			newError.push("The name field is required. ");
+		} else if (value.trim().length <= 2) {
+			newError.push("The name must be longer than 2 characters.");
+		} else if (/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]$/.test(value)) {
+			newError.push("The name can only contain letters.");
+		} else if (!/^\S+\s+\S+/.test(value)) {
+			newError.push("The name must contain at least two words.");
 		}
-		// setError(newError);
-		setValidFullName(newError.length === 0);
-		console.log(newError);
-		console.log(validFullName);
-		console.log("validating full name done");
-		return newError;
+
+		setError((prevError) => ({
+			...prevError,
+			fullName: newError.join(" "),
+		}));
+
+		setValid((prevValid) => ({
+			...prevValid,
+			fullName: newError.length === 0,
+		}));
 	};
 
 	const validateEmail = (value) => {
-		console.log("validating email");
 		const newError = [];
+
 		if (!value || value.trim() === "") {
-			setValidEmail(false);
 			newError.push("The email field is required.");
 		} else if (
 			!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]{2,}\.[a-zA-Z]{2,}$/.test(value)
 		) {
-			setValidEmail(false);
 			newError.push("Must be a valid email address");
 		}
-		// setError(newError);
-		setValidEmail(newError.length === 0);
 
-		console.log(newError);
-		console.log(validEmail);
-		console.log("validating email done");
-		console.log(validEmail);
-		return newError;
+		setError((prevError) => ({
+			...prevError,
+			email: newError.join(" "),
+		}));
+		setValid((prevValid) => ({
+			...prevValid,
+			email: newError.length === 0,
+		}));
 	};
 
 	const validateSpecialist = (value) => {
-		// setValidSpecialist(true);
-		console.log("validating specialist");
-		const newError = [];
-		if (value.trim() === "") {
-			setValidSpecialist(false);
-			newError.push("A speciality must be chosen.");
+		if (!value || value.trim() === "") {
+			setError((prevError) => ({
+				...prevError,
+				specialist: "Please select a specialist.",
+			}));
+			setValid((prevValid) => ({
+				...prevValid,
+				specialist: false,
+			}));
+		} else {
+			setError((prevError) => ({
+				...prevError,
+				specialist: "",
+			}));
+			setValid((prevValid) => ({
+				...prevValid,
+				specialist: true,
+			}));
 		}
-
-		// setError(newError);
-		setValidSpecialist(newError.length === 0);
-		console.log(newError);
-		console.log(validSpecialist);
-		console.log("validating specialist done");
-		return newError;
 	};
 
-	const validateForm = (formData) => {
-		console.log("validating form");
+	useEffect(() => {
+		validateFullName(formData.fullName);
+	}, [formData.fullName]);
 
-		//I got help from chat GPT to find a way to loop throught the form data so that all the fields were validated.
-		//This part of the code was copied directly form the chat:
-		// "for (let [name, value] of Object.entries(formData))"
+	useEffect(() => {
+		validateEmail(formData.email);
+	}, [formData.email]);
 
-		for (let [name, value] of Object.entries(formData)) {
-			console.log(name, value);
-			switch (name) {
-				case "fullName":
-					console.log("switching to fullName");
-					setErrorFullName(validateFullName(value));
-					break;
-				case "email":
-					console.log("switching to email");
-					setErrorEmail(validateEmail(value));
-					break;
-				case "specialist":
-					console.log("switching to specialist");
-					setErrorSpecialist(validateSpecialist(value));
-					break;
-				default:
-					break;
-			}
-		}
-		errorFullName.length === 0 &&
-		errorEmail.length === 0 &&
-		errorSpecialist.length === 0
-			? setValidForm(true)
-			: setValidForm(false);
-	};
+	useEffect(() => {
+		validateSpecialist(formData.specialist);
+	}, [formData.specialist]);
 
-	const handleChange = (e) => {
-		console.log("handling a change");
-		console.log(e.target);
-		const { name, value } = e.target;
-		setFormData({ ...formData, [name]: value });
-		switch (name) {
-			case "fullName":
-				setErrorFullName(validateFullName(value));
-				break;
-			case "email":
-				setErrorEmail(validateEmail(value));
-				break;
-			case "specialist":
-				setErrorSpecialist(validateSpecialist(value));
-				break;
-			default:
-				break;
-		}
-		console.log("CHANGE HANDLED");
-		console.log(formData);
-		console.log(errorEmail);
-		console.log(errorFullName);
-		console.log(errorSpecialist);
-	};
+	useEffect(() => {
+		setValid((prevValid) => ({
+			...prevValid,
+			form: valid.fullName && valid.email && valid.specialist,
+		}));
+	}, [valid.fullName, valid.email, valid.specialist]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("handling a submit");
-		validateForm(formData);
 
-		// Each field should be validated separately
-		if (!validForm) {
-			alert(`Couldn't submit the form. Please check the fields.`);
+		if (!valid.form) {
+			alert(
+				` Unable to submitt form. Please fill out the form correctly before submitting.`
+			);
 			return;
 		}
 
-		const res = await fetch(
-			`https://win24-assignment.azurewebsites.net/api/forms/contact`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(formData),
-			}
-		);
+		try {
+			console.log("Sending contact form...", formData);
+			const res = await fetch(
+				`https://win24-assignment.azurewebsites.net/api/forms/contact`,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(formData),
+				}
+			);
 
-		if (res.ok) {
-			setIsSubmitted(true);
-			alert("Your request has been submitted successfully."); // This alert should be replaced when conditional rendering is implemented
-		} else {
-			alert("Something went wrong. Please try again later.");
+			if (res.ok) {
+				console.log("Contact form submitted successfully");
+				setIsSubmitted(true);
+			} else {
+				throw new Error(res.statusText);
+			}
+		} catch (error) {
+			alert("Something went wrong. Please try again later. Error:", error);
 		}
 	};
 
 	const handleReturnForm = () => {
 		setIsSubmitted(false);
-		setValidFullName(null);
-		setValidEmail(null);
-		setValidSpecialist(null);
-		setErrorFullName("");
-		setErrorEmail("");
-		setErrorSpecialist("");
+		setTouchedFields({ fullName: false, email: false, specialist: false });
+		setValid({ fullName: null, email: null, specialist: null, form: false });
+		setError({ fullName: "", email: "", specialist: "" });
 		setFormData({ fullName: "", email: "", specialist: "" });
 	};
+
 	return (
 		<form className='contact-form' onSubmit={handleSubmit} noValidate>
 			<h3 className='headline'>
@@ -207,31 +205,30 @@ const ContactUsForm = () => {
 							name='fullName'
 							type='text'
 							className={`form-control ${
-								validFullName === null
-									? ""
-									: validFullName
-									? "valid"
-									: "invalid"
+								touchedFields.fullName
+									? valid.fullName
+										? "valid"
+										: "invalid"
+									: ""
 							}`}
 							placeholder='John Doe'
 							value={formData.name}
 							onChange={handleChange}
 						/>
 						<span
-							className={`form-message ${
-								validFullName === null
-									? ""
-									: validFullName
-									? "valid"
-									: "invalid"
-							}`}
+							className={`form-message 
+								${touchedFields.fullName ? (valid.fullName ? "valid" : "invalid") : ""}`}
 						>
-							{validFullName === null ? null : validFullName ? (
-								<i className='fa fa-solid fa-circle-check'> </i>
+							{touchedFields.fullName ? (
+								valid.fullName ? (
+									<i className='fa fa-solid fa-circle-check'> </i>
+								) : (
+									<i className='fa fa-solid fa-circle-exclamation'> </i>
+								)
 							) : (
-								<i className='fa fa-solid fa-circle-exclamation'> </i>
+								""
 							)}
-							{errorFullName && errorFullName}
+							{error.fullName && error.fullName}
 						</span>
 					</div>
 
@@ -241,23 +238,26 @@ const ContactUsForm = () => {
 							name='email'
 							type='email'
 							className={`form-control ${
-								validEmail === null ? "" : validEmail ? "valid" : "invalid"
+								touchedFields.email ? (valid.email ? "valid" : "invalid") : ""
 							}`}
 							placeholder='email@domain.com'
 							value={formData.email}
 							onChange={handleChange}
 						/>
 						<span
-							className={`form-message ${
-								validEmail === null ? "" : validEmail ? "valid" : "invalid"
-							}`}
+							className={`form-message 
+								${touchedFields.email ? (valid.email ? "valid" : "invalid") : ""}`}
 						>
-							{validEmail === null ? null : validEmail ? (
-								<i className='fa-solid fa-circle-check'> </i>
+							{touchedFields.email ? (
+								valid.email ? (
+									<i className='fa fa-solid fa-circle-check'> </i>
+								) : (
+									<i className='fa fa-solid fa-circle-exclamation'> </i>
+								)
 							) : (
-								<i className='fa-solid fa-circle-exclamation'> </i>
+								""
 							)}
-							{errorEmail && errorEmail}
+							{error.email && error.email}
 						</span>
 					</div>
 
@@ -266,11 +266,11 @@ const ContactUsForm = () => {
 						<select
 							name='specialist'
 							className={`form-control ${
-								validSpecialist === null
-									? ""
-									: validSpecialist
-									? "valid"
-									: "invalid"
+								touchedFields.specialist
+									? valid.specialist
+										? "valid"
+										: "invalid"
+									: ""
 							}`}
 							placeholder='Select one'
 							onChange={handleChange}
@@ -282,20 +282,19 @@ const ContactUsForm = () => {
 							<option value='pancakes'>Pancakes</option>
 						</select>
 						<span
-							className={`form-message ${
-								validSpecialist === null
-									? ""
-									: validSpecialist
-									? "valid"
-									: "invalid"
-							}`}
+							className={`form-message 
+								${touchedFields.specialist ? (valid.specialist ? "valid" : "invalid") : ""}`}
 						>
-							{validSpecialist === null ? null : validSpecialist ? (
-								<i className='fa-solid fa-circle-check'> </i>
+							{touchedFields.specialist ? (
+								valid.specialist ? (
+									<i className='fa fa-solid fa-circle-check'> </i>
+								) : (
+									<i className='fa fa-solid fa-circle-exclamation'> </i>
+								)
 							) : (
-								<i className='fa-solid fa-circle-exclamation'> </i>
+								""
 							)}
-							{errorSpecialist && errorSpecialist}
+							{error.specialist && error.specialist}
 						</span>
 					</div>
 
