@@ -78,7 +78,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
+	justify-content: space-between;
 	width: 100%;
+	min-height: 250px;
 	padding: 1.5rem 2.5rem;
 	border-radius: 10px;
 	background-color: var(--color-background-main);
@@ -86,9 +88,10 @@
 	transition: all 0.3s ease-in-out;
 
 	h3.headline {
-		max-width: 70%;
+		align-self: center;
+		max-width: 90%;
 		font-size: 1.5rem;
-		margin-bottom: 1rem;
+		/* margin-bottom: 1rem; */
 	}
 
 	label {
@@ -153,13 +156,7 @@
 	}
 
 	.submitted-text {
-		max-width: 80%;
 		font-size: 1.5rem;
-	}
-	.small-print {
-		margin: 1rem;
-		font-size: 0.75rem;
-		line-height: 0.75rem;
 	}
 }
 /* -----TABLET----- */
@@ -233,8 +230,6 @@
 /* -------DESKTOP-------- */
 @media (min-width: 1400px) {
 	#contact {
-		/* padding-block: 2rem; */
-
 		.container {
 			flex-direction: row;
 			gap: 0rem;
@@ -318,13 +313,10 @@
 
 		.submitted-text {
 			text-align: center;
+			padding: 3rem;
 			max-width: 100%;
 			font-size: 1.5rem;
-		}
-		.small-print {
-			margin: 1rem;
-			font-size: 1rem;
-			line-height: 0.75rem;
+			line-height: 2rem;
 		}
 	}
 }

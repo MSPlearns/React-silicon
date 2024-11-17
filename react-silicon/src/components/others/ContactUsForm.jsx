@@ -50,17 +50,19 @@ const ContactUsForm = () => {
 
 		if (!value || value.trim() === "") {
 			newError.push("The name field is required. ");
-		} else if (value.trim().length <= 2) {
-			newError.push("The name must be longer than 2 characters.");
-		} else if (/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]$/.test(value)) {
-			newError.push("The name can only contain letters.");
+		} else if (value.trim().length <= 1) {
+			newError.push("The name must be at least 2 characters long. ");
 		} else if (!/^\S+\s+\S+/.test(value)) {
-			newError.push("The name must contain at least two words.");
+			newError.push("The name must contain at least two words. ");
+		}
+
+		if (/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]/.test(value)) {
+			newError.push("The name can only contain letters. ");
 		}
 
 		setError((prevError) => ({
 			...prevError,
-			fullName: newError.join(" "),
+			fullName: newError.join("\n"),
 		}));
 
 		setValid((prevValid) => ({
@@ -184,9 +186,10 @@ const ContactUsForm = () => {
 			{isSubmitted ? (
 				<>
 					<div className='submitted-text'>
-						<p> We will be in contact as soon as possible.</p>
-						<p className='small-print'>
-							Please refrain from sending several request about the same topic.{" "}
+						<p>
+							{" "}
+							We will contact you as soon as possible. Remeber to check you
+							email inbox!
 						</p>
 					</div>
 
@@ -228,7 +231,7 @@ const ContactUsForm = () => {
 							) : (
 								""
 							)}
-							{error.fullName && error.fullName}
+							{touchedFields.fullName && error.fullName && error.fullName}
 						</span>
 					</div>
 
@@ -257,7 +260,7 @@ const ContactUsForm = () => {
 							) : (
 								""
 							)}
-							{error.email && error.email}
+							{touchedFields.email && error.email && error.email}
 						</span>
 					</div>
 
@@ -294,7 +297,7 @@ const ContactUsForm = () => {
 							) : (
 								""
 							)}
-							{error.specialist && error.specialist}
+							{touchedFields.specialist && error.specialist && error.specialist}
 						</span>
 					</div>
 
